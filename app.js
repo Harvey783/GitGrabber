@@ -11,6 +11,9 @@ userSearch.addEventListener("keyup", e => {
         ui.noUserAlertMessage("No such user", "alert alert-danger");
       } else {
         ui.showProfile(data.profile);
+        console.log(data.profile);
+        ui.showRepository(data.repos);
+        console.log(data.repos);
       }
     });
   } else {
