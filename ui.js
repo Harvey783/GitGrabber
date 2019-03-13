@@ -2,7 +2,14 @@ class UI {
   constructor() {
     this.profile = document.getElementById("profile");
   }
+
   showProfile(user) {
+    let userJoin = new Date(`${user.created_at}`);
+    let date = userJoin.getDate();
+    let month = userJoin.getMonth();
+    let year = userJoin.getFullYear();
+    let formattedUserJoin = month + 1 + "/" + date + "/" + year;
+
     this.profile.innerHTML = `
     <div class="card card-body mb-2">
       <div class="row">
@@ -20,7 +27,7 @@ class UI {
           <br><br>
           <ul class="list-group">
             <li class="list-group-item">Location: ${user.location}</li>
-            <li class="list-group-item">Member Since: ${user.created_at}</li>
+            <li class="list-group-item">Member Since: ${formattedUserJoin}</li>
           </ul>
         </div>
       </div>
@@ -33,8 +40,20 @@ class UI {
 
   showRepository(repos) {
     let output = "";
-
     repos.forEach(function(repo) {
+      let repoCreated = new Date(`${repo.created_at}`);
+      let createDate = repoCreated.getDate();
+      let createMonth = repoCreated.getMonth();
+      let createYear = repoCreated.getFullYear();
+      let formattedRepoCreated =
+        createMonth + 1 + "/" + createDate + "/" + createYear;
+
+      let repoUpdated = new Date(`${repo.updated_at}`);
+      let updateDate = repoUpdated.getDate();
+      let updateMonth = repoUpdated.getMonth();
+      let updateYear = repoUpdated.getFullYear();
+      let formattedRepoUpdated =
+        updateMonth + 1 + "/" + updateDate + "/" + updateYear;
       output += `
         <div class="card card-body mb-2">
           <div class="row">
@@ -44,8 +63,8 @@ class UI {
       }</a>
             </div>
             <div class="col-md-6">
-            <span class="badge badge-primary">Created: ${repo.created_at}</span>
-            <span class="badge badge-success">Updated: ${repo.updated_at}</span>
+            <span class="badge badge-primary">Created: ${formattedRepoCreated}</span>
+            <span class="badge badge-success">Updated: ${formattedRepoUpdated}</span>
             </div>
           </div>
         </div>
