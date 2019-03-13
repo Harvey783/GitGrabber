@@ -12,10 +12,22 @@ class Github {
       }
     });
 
+    const repositoryResponse = await fetch(
+      `https://api.github.com/users/${user}/repos`,
+      {
+        params: {
+          clientID: this.clientID,
+          clientSecret: this.clientSecret
+        }
+      }
+    );
+
     const profile = await response.json();
+    const repository = await repositoryResponse.json();
 
     return {
-      profile
+      profile,
+      repository
     };
   };
 }
