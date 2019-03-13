@@ -31,4 +31,25 @@ class UI {
   searchBarClear() {
     this.profile.innerHTML = "";
   }
+
+  noUserAlertMessage(message, className) {
+    this.clearNoUserAlertMessage();
+    const div = document.createElement("div");
+    div.className = className;
+    div.appendChild(document.createTextNode(message));
+    const container = document.querySelector(".searchContainer");
+    const search = document.querySelector(".search");
+    container.insertBefore(div, search);
+
+    setTimeout(() => {
+      this.clearNoUserAlertMessage();
+    }, 1750);
+  }
+
+  clearNoUserAlertMessage() {
+    const currentNoUserAlertMessage = document.querySelector(".alert");
+    if (currentNoUserAlertMessage) {
+      currentNoUserAlertMessage.remove();
+    }
+  }
 }
