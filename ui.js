@@ -13,7 +13,7 @@ class UI {
           }" target="_blank" class="btn btn-primary btn-block mb-4">View Profile</a>
         </div>
         <div class="col-md-9">
-          <span class="badge badge-primary">Public Repositories: ${
+          <span class="badge badge-primary">Repositories: ${
             user.public_repos
           }</span>
 
@@ -26,5 +26,9 @@ class UI {
       </div>
     </div>
   `;
+  }
+
+  searchBarClear() {
+    this.profile.innerHTML = "";
   }
 }
